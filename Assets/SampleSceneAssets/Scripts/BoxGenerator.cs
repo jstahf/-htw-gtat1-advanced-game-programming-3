@@ -19,7 +19,7 @@ public class BoxGenerator : MonoBehaviour
 
     }
 
-    private Mesh GenerateMesh()
+    protected Mesh GenerateMesh()
     {
         var mesh = new Mesh();
         mesh.vertices = new Vector3[]
@@ -34,7 +34,7 @@ public class BoxGenerator : MonoBehaviour
         return mesh;
     }
 
-    private Vector2[] getUVs(Mesh mesh)
+    protected Vector2[] getUVs(Mesh mesh)
     {
         Vector2[] uvs = new Vector2[mesh.vertices.Length];
         for (int i = 0; i < mesh.vertices.Length; i++)

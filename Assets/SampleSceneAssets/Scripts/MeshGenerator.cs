@@ -15,6 +15,8 @@ namespace SampleSceneAssets.Scripts
     public enum MeshType {
         Torus,
         Sphere,
+        Dini,
+        Klein
     }
     public class MeshGenerator : MonoBehaviour
     {
@@ -27,13 +29,14 @@ namespace SampleSceneAssets.Scripts
         // Start is called before the first frame update
         private void Awake()
         {
-            switch (meshType)
+            genFunc = meshType switch
             {
-                case MeshType.Sphere:
-                    genFunc = new SphereGenerator();
-                    break;
-                    
-            }
+                MeshType.Sphere => new SphereGenerator(),
+                MeshType.Torus => new TorusGenerator(),
+                MeshType.Dini => new DiniGenerator(),
+                MeshType.Klein => new KleinGenerator(),
+                _ => genFunc
+            };
         }
 
         void Start()
@@ -64,7 +67,7 @@ namespace SampleSceneAssets.Scripts
                 for (int x = 0; x < vertexSize.x; x++)
                 {
                     var u = (1f / subdivisions.x) * x;
-                    var scaledUV = new Vector2(u * uDelta -genFunc.UMinMax.x, v * vDelta - genFunc.VMinMax.x);
+                    var scaledUV = new Vector2(u * uDelta +genFunc.UMinMax.x, v * vDelta +genFunc.VMinMax.x);
                     var vertex = genFunc.GenerateVertex(scaledUV.x, scaledUV.y);
                     var uv = new Vector2(u, v);
                     vertices[x + vertexSize.x * y] = vertex;

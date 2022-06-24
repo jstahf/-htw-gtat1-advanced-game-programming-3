@@ -1,11 +1,12 @@
 
+using System;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 public class PlaneGenerator : MonoBehaviour
 {
-    [SerializeField][Range(1, 20)] private int mSubDivisions;
-    [SerializeField][Range(1, 20)] private int nSubDivisions;
+    [SerializeField][Range(1, 100)] private int mSubDivisions;
+    [SerializeField][Range(1, 100)] private int nSubDivisions;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,13 +29,16 @@ public class PlaneGenerator : MonoBehaviour
         var vertexSize = subdivisions + new Vector2Int(1, 1);
         var vertices = new Vector3[vertexSize.x * vertexSize.y];
         var uvs = new Vector2[vertices.Length];
+        var uDelta = 2 * Mathf.PI;
         for (int y = 0; y < vertexSize.y; y++)
         {
             var v = (1f / subdivisions.y) * y;
             for (int x = 0; x < vertexSize.x; x++)
             {
                 var u = (1f / subdivisions.x) * x;
-                var vertex = new Vector3(u, v, 0);
+                var scaledUV = new Vector2(u * uDelta, v * uDelta);
+                var vertex = new Vector3(3f * Mathf.Cos(scaledUV.x) * Mathf.Sin(scaledUV.y) , 
+                    3f * Mathf.Sin(scaledUV.x) * Mathf.Sin(scaledUV.y), 3f * Mathf.Cos(scaledUV.y));
                 var uv = new Vector2(u, v);
                 vertices[x + vertexSize.x * y] = vertex;
                 uvs[x + vertexSize.x * y] = uv;
@@ -59,6 +63,9 @@ public class PlaneGenerator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.uv = uvs;
+        mesh.RecalculateBounds();
+        mesh.RecalculateNormals();
+        mesh.RecalculateTangents();
         return mesh;
     }
 

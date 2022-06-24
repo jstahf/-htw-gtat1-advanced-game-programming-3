@@ -569,8 +569,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0c61da24604f624885ca6be6b81a3d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mSubDivisions: 20
-  nSubDivisions: 20
+  meshType: 1
+  mSubDivisions: 100
+  nSubDivisions: 100
 --- !u!4 &1254044640
 Transform:
   m_ObjectHideFlags: 0
@@ -613,7 +614,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf59b8132f6cd2f49b8924afeed7674b, type: 2}
+  - {fileID: 2100000, guid: 80c783de8f9d2de49aa80661a4466819, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

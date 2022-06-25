@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace SampleSceneAssets.Scripts
 {
-    public class KleinGenerator: IGeneratorFunction
+    public class KleinGenerator: MeshGenerator
     {
         
-        public Vector2 UMinMax { get; } = new Vector2(0, 2 * Mathf.PI);
-        public Vector2 VMinMax { get; } = new Vector2(0, 2 * Mathf.PI );
-        public Vector3 GenerateVertex(float u, float v)
+        protected override Vector2 UMinMax { get; } = new Vector2(0, 2 * Mathf.PI);
+        protected override Vector2 VMinMax { get; } = new Vector2(0, 2 * Mathf.PI );
+        protected override Vector3 GenerateVertex(float u, float v)
         {
             return  new Vector3(
                 (1 + Mathf.Cos(u / 2) * Mathf.Sin(v) - Mathf.Sin(u / 2) * Mathf.Sin(2 * v)) * Mathf.Cos(u), 

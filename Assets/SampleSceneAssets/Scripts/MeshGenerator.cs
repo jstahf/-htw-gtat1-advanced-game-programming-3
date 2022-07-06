@@ -14,11 +14,6 @@ namespace SampleSceneAssets.Scripts
         protected abstract Vector2 VMinMax { get; }
         protected abstract Vector3 GenerateVertex(float u, float v);
         // Start is called before the first frame update
-        private void Awake()
-        {
-      
-        }
-
         void Start()
         {
             MeshFilter mf = GetComponent<MeshFilter>();
@@ -30,6 +25,7 @@ namespace SampleSceneAssets.Scripts
 
             Mesh mesh = GenerateMesh();
             mf.mesh = mesh;
+            AssignCollider(mesh);
         }
 
         protected Mesh GenerateMesh()
@@ -84,6 +80,12 @@ namespace SampleSceneAssets.Scripts
             }
 
             return triangles;
+        }
+        private void AssignCollider(Mesh mesh)
+        {
+            MeshCollider meshCollider = GetComponent<MeshCollider>();
+            if (meshCollider == null) return;
+            meshCollider.sharedMesh = mesh;
         }
     }
 }

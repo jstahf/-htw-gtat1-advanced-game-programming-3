@@ -1,25 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class ExplosionTrigger : MonoBehaviour
+namespace SampleSceneAssets.Scripts
 {
-    // Start is called before the first frame update
-    private VisualEffect explosion;
-    void Start()
+    /// <summary>
+    /// <c>ExplosionTrigger</c> is used to repeatedly trigger the explosion particle effect effect. I created this
+    /// Vfx graph by using a trigger event just like a real explosion for example when a rocket hits the ground.
+    /// but to use it in the showcase I decided to to trigger it with a set delay. I used a coroutine which
+    /// just waits 5 seconds after each explosion
+    /// </summary>
+    public class ExplosionTrigger : MonoBehaviour
     {
-        explosion = GetComponent<VisualEffect>();
-        StartCoroutine(TriggerParticle());
-
-    }
-
-    IEnumerator TriggerParticle()
-    {
-        while (explosion != null)
+        // Start is called before the first frame update
+        private VisualEffect _effect;
+        void Start()
         {
-            explosion.Reinit();
-            yield return new WaitForSeconds(5f);
+            _effect = GetComponent<VisualEffect>();
+            StartCoroutine(TriggerParticle());
+
+        }
+
+        IEnumerator TriggerParticle()
+        {
+            while (_effect != null)
+            {
+                _effect.Reinit();
+                yield return new WaitForSeconds(5f);
+            }
         }
     }
 }

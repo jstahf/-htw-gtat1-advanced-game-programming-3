@@ -2,6 +2,11 @@ using UnityEngine;
 
 namespace SampleSceneAssets.Scripts
 {
+    /// <summary>
+    /// <c>SphereGenerator</c> is the implementation of the abstract <c>MeshGenerator</c> class and creates
+    /// a sphere with an adjustable Radius. I implemented this myself to test the MeshGenerator class
+    /// because the formula for sphere is somewhat intuitive.
+    /// </summary>
     public class SphereGenerator : MeshGenerator
     {
         [SerializeField] [Range(0.1f, 10)] private float radius = 3;

@@ -9,6 +9,11 @@ namespace SampleSceneAssets.Scripts
         Klein,
         Plane,
     }
+    /// <summary>
+    /// <c>MeshGeneratorWrapper</c> is mainly a class for debugging to eliminate the need to change out the mesh
+    /// generator implementations. it can be used by creating a new Enum and instantiating the related
+    /// Generator in the correct switch case.
+    /// </summary>
     public class MeshGeneratorWrapper : MonoBehaviour
     {
         [SerializeField] private MeshType selectedMesh;

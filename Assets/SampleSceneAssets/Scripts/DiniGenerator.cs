@@ -2,6 +2,11 @@
 
 namespace SampleSceneAssets.Scripts
 {
+    /// <summary>
+    /// <c>DiniGenerator</c> is the implementation of the abstract <c>MeshGenerator</c> class and creates
+    /// a Dini shape which looks like a cross between a needle and a spiral.
+    /// I stumbled upon this shape while researching and found it to look pretty fun so I implemented it
+    /// </summary>
     public class DiniGenerator: MeshGenerator
     {
         [SerializeField] [Range(0.1f, 1f)] private float alpha;

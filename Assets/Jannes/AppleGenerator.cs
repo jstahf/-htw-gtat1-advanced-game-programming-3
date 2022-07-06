@@ -5,7 +5,7 @@ namespace SampleSceneAssets.Scripts
 {
     public class AppleGenerator : MeshGenerator
     {
-        [SerializeField] [Range(0.1f, 10)] private float a = Mathf.PI / 2;
+        //[SerializeField] [Range(0.1f, 10)] private float a = Mathf.PI / 2;
         protected override Vector2 UMinMax => new Vector2(0, 2*Mathf.PI);
         protected override Vector2 VMinMax => new Vector2(-Mathf.PI, Mathf.PI);
 

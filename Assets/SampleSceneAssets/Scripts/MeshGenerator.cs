@@ -14,9 +14,9 @@ namespace SampleSceneAssets.Scripts
     /// </summary>
     public abstract class MeshGenerator : MonoBehaviour
     {
-        [SerializeField] [Range(1, 100)] private int mSubDivisions = 33;
+        [SerializeField] [Range(1, 256)] private int mSubDivisions = 33;
 
-        [SerializeField] [Range(1, 100)] private int nSubDivisions = 33;
+        [SerializeField] [Range(1, 256)] private int nSubDivisions = 33;
         /// <summary>
         /// <c>UMinMax</c> scales the coordinates from 0 and 1 to the given scale
         /// determined by the x and y value of the vector 

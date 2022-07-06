@@ -9,6 +9,9 @@ namespace SampleSceneAssets.Scripts.MaxScript
 
         [SerializeField] [Range(0.01f, 1)] private float swirl = 0.05f;
         [SerializeField] [Range(0.0f, 50)] private float turn = 10;
+        private int mSubDivisions = 256;
+
+        private int nSubDivisions = 256;
         protected override Vector2 UMinMax => new Vector2(-Mathf.PI, Mathf.PI);
         protected override Vector2 VMinMax => new Vector2(-Mathf.PI, Mathf.PI);
 
